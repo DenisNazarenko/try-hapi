@@ -14,32 +14,32 @@ module.exports = new Confidence.Store({
     port: {
       $env: 'PORT',
       $coerce: 'number',
-      $default: 3000,
+      $default: 3000
     },
     debug: {
       $filter: { $env: 'NODE_ENV' },
       $default: {
         log: ['error'],
-        request: ['error'],
+        request: ['error']
       },
       production: {
-        request: ['implementation'],
-      },
-    },
+        request: ['implementation']
+      }
+    }
   },
   register: {
     plugins: [
       {
         plugin: '../lib', // Main plugin
-        options: {},
+        options: {}
       },
       {
         plugin: {
           $filter: { $env: 'NODE_ENV' },
           $default: 'hpal-debug',
-          production: Toys.noop,
-        },
-      },
-    ],
-  },
+          production: Toys.noop
+        }
+      }
+    ]
+  }
 });

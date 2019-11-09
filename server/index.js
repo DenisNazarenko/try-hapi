@@ -3,7 +3,8 @@
 const Glue = require('@hapi/glue');
 const Manifest = require('./manifest');
 
-exports.deployment = async start => {
+exports.deployment = async (start) => {
+
   const manifest = Manifest.get('/');
   const server = await Glue.compose(
     manifest,
@@ -26,7 +27,8 @@ exports.deployment = async start => {
 if (!module.parent) {
   exports.deployment(true);
 
-  process.on('unhandledRejection', err => {
+  process.on('unhandledRejection', (err) => {
+
     throw err;
   });
 }
